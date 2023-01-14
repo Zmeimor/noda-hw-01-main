@@ -8,13 +8,10 @@ const contactsPath = path.resolve('./db/contacts.json');
 async function listContacts() {
     const data = await fs.readFile(contactsPath);
     const contacts = JSON.parse(data);
-    // console.log(contacts);
     return contacts;
   };
 
   const getContactById = async(contactId) => {
-    // const data = await fs.readFile(contactsPath);
-    // const contacts =JSON.parse(data);
     const contacts = await listContacts();
     const result = contacts.find(item => Number(item.id) === contactId)
     if (!result) {
